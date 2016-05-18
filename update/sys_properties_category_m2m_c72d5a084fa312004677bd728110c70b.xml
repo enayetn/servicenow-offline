@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties_category_m2m">
+    <sys_properties_category_m2m action="INSERT_OR_UPDATE">
+        <category display_value="ServiceNow Offline">d7fc5a084fa312004677bd728110c77b</category>
+        <order>200</order>
+        <property display_value="x_snc_snoff.field_types" name="x_snc_snoff.field_types">bf7c96084fa312004677bd728110c76d</property>
+        <sys_class_name>sys_properties_category_m2m</sys_class_name>
+        <sys_created_by>lars-ake.bolk</sys_created_by>
+        <sys_created_on>2016-05-18 00:46:50</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>c72d5a084fa312004677bd728110c70b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_snoff.field_types.ServiceNow Offline</sys_name>
+        <sys_package display_value="ServiceNow Offline" source="x_snc_snoff">677d0e004fa312004677bd728110c77c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="ServiceNow Offline">677d0e004fa312004677bd728110c77c</sys_scope>
+        <sys_update_name>sys_properties_category_m2m_c72d5a084fa312004677bd728110c70b</sys_update_name>
+        <sys_updated_by>lars-ake.bolk</sys_updated_by>
+        <sys_updated_on>2016-05-18 00:46:50</sys_updated_on>
+    </sys_properties_category_m2m>
+</record_update>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Offline Table" max_length="40" name="x_snc_snoff_m2m_application_table" type="collection">
+        <element label="Offline Application" max_length="32" name="offline_application" reference="x_snc_snoff_application" type="reference"/>
+        <element label="Table" max_length="32" name="table" reference="sys_db_object" type="reference"/>
+        <index name="index">
+            <element name="offline_application"/>
+        </index>
+        <index name="index2">
+            <element name="table"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name>snoff_generate_application</action_name>
+        <active>true</active>
+        <client>false</client>
+        <comments/>
+        <condition/>
+        <form_action>true</form_action>
+        <form_button>false</form_button>
+        <form_context_menu>false</form_context_menu>
+        <form_link>true</form_link>
+        <hint/>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <name>Generate Offline Application</name>
+        <onclick/>
+        <order>100</order>
+        <script><![CDATA[// ToDo: Create structures and data for supporting data
+
+generateOfflineApplication();
+
+function generateOfflineApplication() {
+	var arrayTable = '[';
+	
+	var grTable = new GlideRecord('x_snc_snoff_m2m_application_table');
+	grTable.addQuery('offline_application.sys_id', current.sys_id);
+	grTable.query();
+	
+	while (grTable.next()) {
+		arrayTable += 'new Table({\'name\': \'' + grTable.table.name.toString().replace(/(\n|\r\n|\r|\')/g, '') + '\', \'label\': \'' + grTable.table.label.toString().replace(/(\n|\r\n|\r|\')/g, '') + '\', \'record\': [';
+
+		var record = new GlideRecord('x_snc_snoff_m2m_table_record');
+		record.addQuery('offline_table.sys_id', grTable.sys_id);
+		record.query();
+
+		while (record.next()) {
+			arrayTable += 'new Record({\'sys_id\': \'' + record.offline_record.sys_id.toString().replace(/(\n|\r\n|\r|\')/g, '') + '\', \'displayValue\': \'' + record.offline_record.number.toString().replace(/(\n|\r\n|\r|\')/g, '') + '\', \'field\': ['; // ToDo: Could get the "real" display value, instead of number, by a direct get GlideRecord on the specific table
+
+			var field = new GlideRecord('x_snc_snoff_m2m_table_field');
+			field.addQuery('offline_table.sys_id', grTable.sys_id);
+			field.query();
+
+			while (field.next()) {
+				arrayTable += 'new Field({\'name\': \'' + field.offline_field.element.toString().replace(/(\n|\r\n|\r|\')/g, '') + '\', \'label\': \'' + field.offline_field.column_label.toString().replace(/(\n|\r\n|\r|\')/g, '') + '\', \'type\': \'' + field.offline_field.internal_type.name.toString().replace(/(\n|\r\n|\r|\')/g, '') + '\', \'value\': \'' + record.offline_record[field.offline_field.element.toString()].toString().replace(/(\n|\r\n|\r|\')/g, '') + '\'}),';
+			}
+
+			if (arrayTable.slice(-1) == ',') {
+				arrayTable = arrayTable.slice(0, arrayTable.length - 1);
+			}
+
+			arrayTable += ']}),'; // End of Field array
+		}
+
+		if (arrayTable.slice(-1) == ',') {
+			arrayTable = arrayTable.slice(0, arrayTable.length - 1);
+		}
+
+		arrayTable += ']}),'; // End of Record array
+	}
+
+	if (arrayTable.slice(-1) == ',') {
+		arrayTable = arrayTable.slice(0, arrayTable.length - 1);
+	}
+
+	arrayTable += ']'; // End of Table array
+
+	current.offline_application = current.base;
+	
+	// ToDo: Replace part of the content of current.offline_application!!!!!!!!!!!!!!!!!!!
+	current.offline_application = current.offline_application.replace(/\'\*\*\*SNOFF\*\*\*\'/g, arrayTable);
+	current.update();
+	
+	gs.addInfoMessage('Offline Application generated...');
+	
+	action.setRedirectURL(current);
+}
+]]></script>
+        <show_insert>false</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>lars-ake.bolk</sys_created_by>
+        <sys_created_on>2016-05-18 01:36:15</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>fcf7ae0c4fa312004677bd728110c784</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Generate Offline Application</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="ServiceNow Offline" source="x_snc_snoff">677d0e004fa312004677bd728110c77c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="ServiceNow Offline">677d0e004fa312004677bd728110c77c</sys_scope>
+        <sys_update_name>sys_ui_action_fcf7ae0c4fa312004677bd728110c784</sys_update_name>
+        <sys_updated_by>lars-ake.bolk</sys_updated_by>
+        <sys_updated_on>2016-05-18 06:55:25</sys_updated_on>
+        <table>x_snc_snoff_application</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>true</ui16_compatible>
+    </sys_ui_action>
+</record_update>

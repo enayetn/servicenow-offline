@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Allow direct DOM and jQuery client script access.</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_snc_snoff.glide.script.block.client.globals</name>
+        <read_roles/>
+        <suffix>glide.script.block.client.globals</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>lars-ake.bolk</sys_created_by>
+        <sys_created_on>2016-05-18 01:53:19</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>643ca28c4fa312004677bd728110c7bb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_snoff.glide.script.block.client.globals</sys_name>
+        <sys_package display_value="ServiceNow Offline" source="x_snc_snoff">677d0e004fa312004677bd728110c77c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="ServiceNow Offline">677d0e004fa312004677bd728110c77c</sys_scope>
+        <sys_update_name>sys_properties_643ca28c4fa312004677bd728110c7bb</sys_update_name>
+        <sys_updated_by>lars-ake.bolk</sys_updated_by>
+        <sys_updated_on>2016-05-18 01:53:19</sys_updated_on>
+        <type>boolean</type>
+        <value>false</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=643ca28c4fa312004677bd728110c7bb"/>
+</record_update>
